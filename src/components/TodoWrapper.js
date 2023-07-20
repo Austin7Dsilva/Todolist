@@ -6,16 +6,20 @@ import { EditTodoForm } from "./EditTodoForm";
 
 const TodoWrapper = () => {
   const [todos, setTodos] = useState([]);
+  const [totalCount, setTotalCount] = useState(0);
 
   const addTodo = todo => {
     setTodos([
       ...todos,
       { id: uuidv4(), task: todo, completed: false, isEditing: false },
     ]);
-    console.log(todos);
+    setTotalCount(totalCount+1);
   }
 
-  const deleteTodo = (id) => setTodos(todos.filter((todo) => todo.id !== id));
+  const deleteTodo = (id) => {
+    setTodos(todos.filter((todo) => todo.id !== id));
+    setTotalCount(totalCount-1);
+  };
 
   const toggleComplete = (id) => {
     setTodos(
@@ -58,6 +62,7 @@ const TodoWrapper = () => {
           />
         )
       )}
+      <h4>Total number of task : {totalCount}</h4>
     </div>
   )
 }

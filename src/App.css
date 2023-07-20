@@ -85,3 +85,7 @@ h1 {
     width: auto;
   }
 }
+
+.TodoWrapper h4{
+  color: white;
+}
